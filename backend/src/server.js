@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-const applicationRoutes = require("./routes/scrape");
-app.use("/scrape", applicationRoutes);
+const scrapeRoutes = require("./routes/scrape");
+app.use("/scrape", scrapeRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to main endpoint" });
