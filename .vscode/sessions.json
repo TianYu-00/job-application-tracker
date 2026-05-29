@@ -11,30 +11,40 @@
         "autoExecuteCommands": true,
         "icon": "person",
         "color": "terminal.ansiGreen",
-        "commands": ["echo hello"]
+        "commands": [
+          "echo hello"
+        ]
       },
       [
         {
           "name": "backend",
           "autoExecuteCommands": true,
-          "commands": ["cd backend"]
+          "commands": [
+            "cd backend"
+          ]
         },
         {
           "name": "backend:server",
           "autoExecuteCommands": true,
-          "commands": ["cd backend"]
+          "commands": [
+            "cd backend; npm run dev"
+          ]
         }
       ],
       [
         {
           "name": "frontend",
           "autoExecuteCommands": true,
-          "commands": ["cd frontend"]
+          "commands": [
+            "cd frontend"
+          ]
         },
         {
           "name": "frontend:server",
           "autoExecuteCommands": true,
-          "commands": ["cd frontend"]
+          "commands": [
+            "cd frontend"
+          ]
         }
       ]
     ]
