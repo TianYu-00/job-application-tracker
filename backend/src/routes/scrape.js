@@ -3,9 +3,9 @@ const router = express.Router();
 
 const { scrapeJob } = require("../controllers/scrapeController");
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const url = req.query.url;
+    const url = req.body.url;
 
     if (!url) {
       return res.status(400).json({

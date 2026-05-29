@@ -5,8 +5,8 @@ const api = axios.create({
 });
 
 export const fetchJob = (url) => {
-  return api.get("/scrape", {
-    params: { url },
+  return api.post("/scrape", {
+    url,
   });
 };
 
