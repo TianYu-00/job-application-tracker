@@ -1,12 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // routes
-const applicationRoutes = require("./routes/applications");
-app.use("/applications", applicationRoutes);
+const applicationRoutes = require("./routes/scrape");
+app.use("/scrape", applicationRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to main endpoint" });
