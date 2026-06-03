@@ -1,4 +1,4 @@
-const { getBrowser } = require("../browsers/playwright");
+import { getBrowser } from "../browsers/playwright.js";
 
 async function scrapeIndeedJob(url) {
   const browser = await getBrowser();
@@ -35,4 +35,4 @@ async function scrapeIndeedJob(url) {
   };
 }
 
-module.exports = { scrapeIndeedJob };
+export { scrapeIndeedJob };

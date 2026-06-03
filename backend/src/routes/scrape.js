@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import { scrapeJob } from "../controllers/scrapeController.js";
 
-const { scrapeJob } = require("../controllers/scrapeController");
+const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
@@ -30,4 +30,4 @@ router.post("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

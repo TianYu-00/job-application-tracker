@@ -1,5 +1,6 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import scrapeRoutes from "./routes/scrape.js";
 
 const app = express();
 
@@ -7,7 +8,6 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-const scrapeRoutes = require("./routes/scrape");
 app.use("/scrape", scrapeRoutes);
 
 app.get("/", (req, res) => {

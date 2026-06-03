@@ -1,4 +1,4 @@
-const { chromium } = require("playwright");
+import { chromium } from "playwright";
 
 let browser;
 
@@ -12,6 +12,4 @@ async function getBrowser() {
   return browser;
 }
 
-module.exports = {
-  getBrowser,
-};
+export { getBrowser };

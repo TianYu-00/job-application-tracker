@@ -1,4 +1,4 @@
-const { scrapeIndeedJob } = require("./indeed");
+import { scrapeIndeedJob } from "./indeed.js";
 
 const scrapers = [
   {
@@ -12,6 +12,4 @@ function getScraper(url) {
   return scrapers.find((s) => s.match(url));
 }
 
-module.exports = {
-  getScraper,
-};
+export { getScraper };

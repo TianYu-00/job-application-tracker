@@ -1,4 +1,4 @@
-const { getScraper } = require("../scrapers");
+import { getScraper } from "../scrapers/index.js";
 
 async function scrapeJob(url) {
   const scraper = getScraper(url);
@@ -10,6 +10,4 @@ async function scrapeJob(url) {
   return await scraper.scrape(url);
 }
 
-module.exports = {
-  scrapeJob,
-};
+export { scrapeJob };
