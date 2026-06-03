@@ -9,5 +9,6 @@ CREATE TABLE applications (
   description TEXT,
   status      TEXT DEFAULT 'applied',
   applied_at  TIMESTAMPTZ DEFAULT NOW(),
-  created_at  TIMESTAMPTZ DEFAULT NOW()
+  created_at  TIMESTAMPTZ DEFAULT NOW(),
+  updated_at  TIMESTAMPTZ DEFAULT NOW()
 );
