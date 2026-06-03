@@ -1,4 +1,5 @@
 import { getScraper } from "../scrapers/index.js";
+import { insertApplication } from "../../db/queries.js";
 
 async function scrapeJob(url) {
   const scraper = getScraper(url);
@@ -7,7 +8,11 @@ async function scrapeJob(url) {
     throw new Error("No scraper found for this URL");
   }
 
-  return await scraper.scrape(url);
+  const data = await scraper.scrape(url);
+  console.log("Scraped data:", data);
+  const saved = await insertApplication(data);
+
+  return saved;
 }
 
 export { scrapeJob };

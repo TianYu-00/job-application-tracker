@@ -5,7 +5,7 @@ CREATE TABLE applications (
   url         TEXT NOT NULL UNIQUE,
   title       TEXT,
   company     TEXT,
-  city        TEXT,
+  location    TEXT,
   description TEXT,
   status      TEXT DEFAULT 'applied',
   applied_at  TIMESTAMPTZ DEFAULT NOW(),
