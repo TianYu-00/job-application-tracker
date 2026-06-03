@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllApplications } from "../../db/queries.js";
+import { getAllApplications, insertApplication } from "../../db/queries.js";
 
 const router = express.Router();
 
@@ -7,6 +7,22 @@ router.get("/", async (req, res) => {
   try {
     const applications = await getAllApplications();
     res.json({ success: true, data: applications });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const { url, title, company, location, description } = req.body;
+
+    if (!url) {
+      return res.status(400).json({ success: false, error: "Missing url" });
+    }
+
+    const saved = await insertApplication({ url, title, company, location, description });
+    res.json({ success: true, data: saved });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, error: err.message });
