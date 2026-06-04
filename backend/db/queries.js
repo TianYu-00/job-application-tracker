@@ -1,11 +1,19 @@
 import sql from "./client.js";
 
 export async function insertApplication(data) {
-  const { url, title = null, company = null, location = null, description = null, applied_at = null } = data;
+  const {
+    url,
+    title = null,
+    company = null,
+    location = null,
+    description = null,
+    applied_at = null,
+    work_type = null,
+  } = data;
 
   const [row] = await sql`
-    INSERT INTO applications (url, title, company, location, description, applied_at)
-    VALUES (${url}, ${title}, ${company}, ${location}, ${description}, ${applied_at ?? sql`NOW()`})
+    INSERT INTO applications (url, title, company, location, description, applied_at, work_type)
+    VALUES (${url}, ${title}, ${company}, ${location}, ${description}, ${applied_at ?? sql`NOW()`}, ${work_type})
     RETURNING *
   `;
 

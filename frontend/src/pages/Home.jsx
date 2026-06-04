@@ -5,6 +5,7 @@ const emptyForm = {
   title: "",
   company: "",
   location: "",
+  work_type: "",
   description: "",
   url: "",
   applied_at: new Date().toISOString().split("T")[0],
@@ -110,6 +111,20 @@ function Home() {
               value={data.location || ""}
               onChange={(e) => setData({ ...data, location: e.target.value })}
             />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium">Work Type</label>
+            <select
+              className="border-2 p-2"
+              value={data.work_type || ""}
+              onChange={(e) => setData({ ...data, work_type: e.target.value })}
+            >
+              <option value="">Unknown</option>
+              <option value="Remote">Remote</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="On-site">On-site</option>
+            </select>
           </div>
 
           <div className="flex flex-col gap-1">

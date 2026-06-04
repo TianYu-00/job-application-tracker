@@ -23,6 +23,15 @@ async function scrapeIndeedJob(url) {
       company: getText('[data-testid="inlineHeader-companyName"]'),
       location: getText('[data-testid="inlineHeader-companyLocation"]'),
       description: getText("#jobDescriptionText"),
+      work_type: (() => {
+        const locationEl = document.querySelector('[data-testid="inlineHeader-companyLocation"]');
+        const raw = locationEl?.nextElementSibling?.innerText?.trim() || null;
+        if (!raw) return null;
+        if (raw.toLowerCase().includes("remote")) return "Remote";
+        if (raw.toLowerCase().includes("hybrid")) return "Hybrid";
+        if (raw.toLowerCase().includes("on-site")) return "On-site";
+        return raw;
+      })(),
     };
   });
 

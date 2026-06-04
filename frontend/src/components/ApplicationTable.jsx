@@ -5,6 +5,7 @@ const columns = [
   { accessorKey: "title", header: "Title" },
   { accessorKey: "company", header: "Company" },
   { accessorKey: "location", header: "Location" },
+  { accessorKey: "work_type", header: "Work Type" },
   { accessorKey: "status", header: "Status" },
   {
     accessorKey: "applied_at",

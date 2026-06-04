@@ -19,13 +19,13 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { url, title, company, location, description, applied_at } = req.body;
+    const { url, title, company, location, description, applied_at, work_type } = req.body;
 
     if (!url) {
       return res.status(400).json({ success: false, error: "Missing url" });
     }
 
-    const saved = await insertApplication({ url, title, company, location, description, applied_at });
+    const saved = await insertApplication({ url, title, company, location, description, applied_at, work_type });
     res.json({ success: true, data: saved });
   } catch (err) {
     console.error(err);

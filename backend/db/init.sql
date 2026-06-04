@@ -7,6 +7,7 @@ CREATE TABLE applications (
   company     TEXT,
   location    TEXT,
   description TEXT,
+  work_type   TEXT,
   status      TEXT DEFAULT 'applied',
   applied_at  TIMESTAMPTZ DEFAULT NOW(),
   created_at  TIMESTAMPTZ DEFAULT NOW(),
