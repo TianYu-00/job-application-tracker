@@ -10,8 +10,8 @@ export const fetchJob = (url) => {
   });
 };
 
-export const fetchApplications = () => {
-  return api.get("/applications");
+export const fetchApplications = ({ page = 1, limit = 15, search = "" } = {}) => {
+  return api.get("/applications", { params: { page, limit, search } });
 };
 
 export default api;

@@ -12,6 +12,32 @@ export async function insertApplication(data) {
   return row;
 }
 
-export async function getAllApplications() {
-  return await sql`SELECT * FROM applications ORDER BY created_at DESC`;
+export async function getAllApplications({ page = 1, limit = 20, search = "" } = {}) {
+  const offset = (page - 1) * limit;
+
+  const applications = await sql`
+    SELECT * FROM applications
+    WHERE ${search} = '' OR
+      title ILIKE ${"%" + search + "%"} OR
+      company ILIKE ${"%" + search + "%"} OR
+      location ILIKE ${"%" + search + "%"}
+    ORDER BY created_at DESC
+    LIMIT ${limit} OFFSET ${offset}
+  `;
+
+  const [{ count }] = await sql`
+    SELECT COUNT(*) FROM applications
+    WHERE ${search} = '' OR
+      title ILIKE ${"%" + search + "%"} OR
+      company ILIKE ${"%" + search + "%"} OR
+      location ILIKE ${"%" + search + "%"}
+  `;
+
+  return {
+    data: applications,
+    total: parseInt(count),
+    page,
+    limit,
+    totalPages: Math.max(1, Math.ceil(count / limit)),
+  };
 }

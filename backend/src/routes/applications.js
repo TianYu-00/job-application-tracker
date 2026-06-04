@@ -5,8 +5,12 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const applications = await getAllApplications();
-    res.json({ success: true, data: applications });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 20;
+    const search = req.query.search || "";
+
+    const result = await getAllApplications({ page, limit, search });
+    res.json({ success: true, ...result });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, error: err.message });
