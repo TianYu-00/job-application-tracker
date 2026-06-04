@@ -10,4 +10,8 @@ export const fetchJob = (url) => {
   });
 };
 
+export const fetchApplications = () => {
+  return api.get("/applications");
+};
+
 export default api;
