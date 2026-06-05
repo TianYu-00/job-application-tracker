@@ -18,4 +18,8 @@ export const fetchApplications = ({ page = 1, limit = 12, search = "" } = {}) =>
   return api.get("/applications", { params: { page, limit, search } });
 };
 
+export const updateApplication = (id, data) => {
+  return api.put(`/applications/${id}`, data);
+};
+
 export default api;

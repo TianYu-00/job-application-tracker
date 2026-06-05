@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllApplications, insertApplication } from "../../db/queries.js";
+import { getAllApplications, insertApplication, updateApplication } from "../../db/queries.js";
 
 const router = express.Router();
 
@@ -27,6 +27,27 @@ router.post("/", async (req, res) => {
 
     const saved = await insertApplication({ url, title, company, location, description, applied_at, work_type });
     res.json({ success: true, data: saved });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, company, location, description, work_type, status, applied_at } = req.body;
+
+    const updated = await updateApplication(id, {
+      title,
+      company,
+      location,
+      description,
+      work_type,
+      status,
+      applied_at,
+    });
+    res.json({ success: true, data: updated });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, error: err.message });

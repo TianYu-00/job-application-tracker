@@ -49,3 +49,24 @@ export async function getAllApplications({ page = 1, limit = 20, search = "" } =
     totalPages: Math.max(1, Math.ceil(count / limit)),
   };
 }
+
+export async function updateApplication(id, data) {
+  const { title, company, location, description, work_type, status, applied_at } = data;
+
+  const [row] = await sql`
+    UPDATE applications
+    SET
+      title = ${title},
+      company = ${company},
+      location = ${location},
+      description = ${description},
+      work_type = ${work_type},
+      status = ${status},
+      applied_at = ${applied_at},
+      updated_at = NOW()
+    WHERE id = ${id}
+    RETURNING *
+  `;
+
+  return row;
+}

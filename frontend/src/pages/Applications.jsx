@@ -48,6 +48,12 @@ function Applications() {
           onPageChange={setPage}
           search={search}
           onSearchChange={handleSearch}
+          onUpdate={() =>
+            fetchApplications({ page, search }).then((res) => {
+              setApplications(res.data.data);
+              setTotalPages(res.data.totalPages);
+            })
+          }
         />
       )}
     </div>
