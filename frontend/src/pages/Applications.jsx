@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ApplicationTable from "../components/ApplicationTable";
 import { fetchApplications } from "../api";
+import { Loader2 } from "lucide-react";
 
 function Applications() {
   const [applications, setApplications] = useState([]);
@@ -26,10 +27,19 @@ function Applications() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Applications</h1>
+    <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="mb-8">
+        <h1 className="text-2xl font-semibold tracking-tight">Applications</h1>
+        <p className="text-sm text-muted-foreground mt-1">Track and manage your job applications.</p>
+      </div>
+
       {loading ? (
-        <p>Loading...</p>
+        <div className="flex items-center justify-center py-24">
+          <div className="flex flex-col items-center gap-3">
+            <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+            <p className="text-sm text-muted-foreground">Loading applications...</p>
+          </div>
+        </div>
       ) : (
         <ApplicationTable
           data={applications}

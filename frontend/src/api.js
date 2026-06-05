@@ -14,7 +14,7 @@ export const saveApplication = (data) => {
   return api.post("/applications", data);
 };
 
-export const fetchApplications = ({ page = 1, limit = 15, search = "" } = {}) => {
+export const fetchApplications = ({ page = 1, limit = 12, search = "" } = {}) => {
   return api.get("/applications", { params: { page, limit, search } });
 };
 

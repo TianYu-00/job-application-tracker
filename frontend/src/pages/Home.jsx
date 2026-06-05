@@ -66,7 +66,7 @@ function Home() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="mb-8">
         <h1 className="text-2xl font-semibold tracking-tight">Add Application</h1>
         <p className="text-sm text-muted-foreground mt-1">Scrape a job listing or add one manually.</p>
@@ -136,7 +136,7 @@ function Home() {
               </FormField>
             )}
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <FormField label="Title">
                 <Input value={data.title || ""} onChange={(e) => setData({ ...data, title: e.target.value })} />
               </FormField>
@@ -151,7 +151,7 @@ function Home() {
 
               <FormField label="Work Type">
                 <Select value={data.work_type || ""} onValueChange={(val) => setData({ ...data, work_type: val })}>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -162,16 +162,16 @@ function Home() {
                   </SelectContent>
                 </Select>
               </FormField>
-            </div>
 
-            <FormField label="Applied At">
-              <Input
-                type="date"
-                value={data.applied_at || new Date().toISOString().split("T")[0]}
-                onChange={(e) => setData({ ...data, applied_at: e.target.value })}
-                className="w-fit"
-              />
-            </FormField>
+              <FormField label="Applied At">
+                <Input
+                  type="date"
+                  value={data.applied_at || new Date().toISOString().split("T")[0]}
+                  onChange={(e) => setData({ ...data, applied_at: e.target.value })}
+                  className="w-full"
+                />
+              </FormField>
+            </div>
 
             <FormField label="Description">
               <Textarea
