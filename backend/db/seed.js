@@ -28,7 +28,7 @@ const locations = [
   "Cardiff",
   "Remote",
 ];
-const statuses = ["applied", "interview", "offer", "rejected"];
+const statuses = ["Applied", "Interview", "Offer", "Rejected"];
 
 function random(arr) {
   return arr[Math.floor(Math.random() * arr.length)];

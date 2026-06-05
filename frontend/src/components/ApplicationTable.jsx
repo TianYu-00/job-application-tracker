@@ -20,13 +20,13 @@ const workTypeBadgeVariant = (workType) => {
 
 const statusBadgeVariant = (status) => {
   switch (status) {
-    case "applied":
+    case "Applied":
       return "secondary";
-    case "interview":
+    case "Interview":
       return "default";
-    case "offer":
+    case "Offer":
       return "success";
-    case "rejected":
+    case "Rejected":
       return "danger";
     default:
       return "outline";
