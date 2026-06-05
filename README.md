@@ -45,3 +45,4 @@ https://playwright.dev/docs/actionability
 https://playwright.dev/docs/evaluating
 https://playwright.dev/docs/debug
 https://ui.shadcn.com/docs/installation/vite
+https://ui.shadcn.com/create?template=vite&base=base
